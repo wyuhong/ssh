@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+<package name="default" extends="json-default"> 
+
+	<action name="vcode" class="com.wyh.util.VerifyCodeAction" method="verifyCodes">
+	</action>	
+    <action name="existLoginname" class="com.wyh.action.UserAction" method="existLoginname">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+	</action>	
+	<action name="existEmail" class="com.wyh.action.UserAction" method="existEmail">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+	</action>	
+	
+	<action name="validateVerifyCode" class="com.wyh.action.UserAction" method="validateVerifyCode">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+	</action>	
+
+	<action name="regist" class="com.wyh.action.UserAction" method="regist">
+			<result name="success">/jsps/msg.jsp</result>
+			<result name="error">/jsps/user/regist.jsp</result>
+	</action>
+	
+	<action name="activation" class="com.wyh.action.UserAction" method="activation">
+			<result name="success">/jsps/msg.jsp</result>
+	</action>
+	
+	<action name="login" class="com.wyh.action.UserAction" method="login">
+			<result name="success">/index.jsp</result>
+			<result name="error">/jsps/user/login.jsp</result>
+	</action>
+	
+	<action name="existLoginpass" class="com.wyh.action.UserAction" method="existLoginpass">
+			<result name="success" type="json">
+				<param name="root">jo</param>
+			</result>
+	</action>
+	
+	<action name="updatepass" class="com.wyh.action.UserAction" method="updatepass">
+			<result name="success">/jsps/msg.jsp</result>
+			<result name="error">/jsps/user/pwd.jsp</result>
+	</action>	
+	
+	<action name="quit" class="com.wyh.action.UserAction" method="quit">
+			<result name="success">/jsps/user/login.jsp</result>
+	</action>
+	
+	<action name="listCategories" class="com.wyh.action.CategoryAction" method="listCategories">
+    		<result name="success" type="json">
+    			<param name="root">clist</param>
+    		</result>
+    </action>
+    
+    <action name="listBookByCategory" class="com.wyh.action.BookAction" method="listBookByCategory">
+			<result name="success">/jsps/book/list.jsp</result>
+	</action>
+	
+	<action name="getBookByBid" class="com.wyh.action.BookAction" method="getBookByBid">
+			<result name="success">/jsps/book/desc.jsp</result>
+	</action>
+	
+	<action name="listBooksByAuthor" class="com.wyh.action.BookAction" method="listBooksByAuthor">
+			<result name="success">/jsps/book/list.jsp</result>
+	</action>
+	
+	<action name="listBooksByPress" class="com.wyh.action.BookAction" method="listBooksByPress">
+			<result name="success">/jsps/book/list.jsp</result>
+	</action>
+	
+	<action name="listBooksByBnameFuzzy" class="com.wyh.action.BookAction" method="listBooksByBnameFuzzy">
+			<result name="success">/jsps/book/list.jsp</result>
+	</action>
+	
+	<action name="listBooksByConditionsFuzzy" class="com.wyh.action.BookAction" method="listBooksByConditionsFuzzy">
+			<result name="success">/jsps/book/list.jsp</result>
+	</action>
+	
+	<action name="mycart" class="com.wyh.action.CartItemAction" method="mycart">
+			<result name="success">/jsps/cart/list.jsp</result>
+	</action>
+	
+	<action name="listCartItems" class="com.wyh.action.CartItemAction" method="listCartItems">
+			<result name="success">/jsps/cart/list.jsp</result>
+	</action>
+	
+	 <action name="addQuantity" class="com.wyh.action.CartItemAction" method="addQuantity">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+	</action>	
+	
+	<action name="reduceQuantity" class="com.wyh.action.CartItemAction" method="reduceQuantity">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+	</action>	
+	
+	<action name="deleteCartItemById" class="com.wyh.action.CartItemAction" method="deleteCartItemById">
+			<result name="success" type="redirectAction">listCartItems</result>
+	</action>
+	
+	<action name="listCartItemsById" class="com.wyh.action.CartItemAction" method="listCartItemsById">
+			<result name="success">/jsps/cart/showitem.jsp</result>
+	</action>
+	
+	<action name="DeleteCart" class="com.wyh.action.CartItemAction" method="DeleteCart">
+			<result name="success" type="redirectAction">listCartItems</result>
+	</action>
+	
+	<action name="saveOrder" class="com.wyh.action.OrderAction" method="saveOrder">
+			<result name="success">/jsps/order/ordersucc.jsp</result>
+	</action>
+	
+	<action name="listOrdersByUser" class="com.wyh.action.OrderAction" method="listOrdersByUser">
+			<result name="success">/jsps/order/list.jsp</result>
+	</action>
+	
+	<action name="getOrderByOid" class="com.wyh.action.OrderAction" method="getOrderByOid">
+			<result name="success">/jsps/order/desc.jsp</result>
+	</action>
+	
+	<action name="cancelOrder" class="com.wyh.action.OrderAction" method="cancelOrder">
+			<result name="success">/jsps/msg.jsp</result>
+			<result name="error">/jsps/msg.jsp</result>
+	</action>
+	<action name="confirmOrder" class="com.wyh.action.OrderAction" method="confirmOrder">
+			<result name="success">/jsps/msg.jsp</result>
+			<result name="error">/jsps/msg.jsp</result>
+	</action>
+</package>
+   
+</struts>
